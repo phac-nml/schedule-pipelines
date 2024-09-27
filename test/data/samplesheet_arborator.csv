@@ -1,0 +1,5 @@
+sample,mlst_alleles,metadata_partition,metadata_1,metadata_2,metadata_3,metadata_4,metadata_5,metadata_6,metadata_7,metadata_8
+sample1,https://raw.githubusercontent.com/phac-nml/gasnomenclature/dev/tests/data/reports/sample1.mlst.json,1.1.1,"Escherichia coli","EHEC/STEC","Canada","O157:H7",21,"2024/05/30","beef",true
+sample2,https://raw.githubusercontent.com/phac-nml/gasnomenclature/dev/tests/data/reports/sample2.mlst.json,1.1.1,"Escherichia coli","EHEC/STEC","The United States","O157:H7",55,"2024/05/21","milk",false
+sample3,https://raw.githubusercontent.com/phac-nml/gasnomenclature/dev/tests/data/reports/sample3.mlst.json,1.1.2,"Escherichia coli","EPEC","France","O125",14,"2024/04/30","cheese",true
+sampleQ,https://raw.githubusercontent.com/phac-nml/gasnomenclature/dev/tests/data/reports/sampleQ.mlst.json,,"Escherichia coli","EPEC","France","O125",35,"2024/04/22","cheese",true
