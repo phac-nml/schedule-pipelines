@@ -1,0 +1,18 @@
+{
+    "ar_config": "",
+    "ar_thresholds": "10,5,0",
+
+    "metadata_partition_name": "outbreak",
+    "metadata_1_header": "metadata_1",
+    "metadata_2_header": "metadata_2",
+    "metadata_3_header": "metadata_3",
+    "metadata_4_header": "metadata_4",
+    "metadata_5_header": "metadata_5",
+    "metadata_6_header": "metadata_6",
+    "metadata_7_header": "metadata_7",
+    "metadata_8_header": "metadata_8",
+
+    "max_cpus": 1,
+    "max_memory": "2.GB",
+    "max_time": "1.h"
+}

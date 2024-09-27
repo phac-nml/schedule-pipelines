@@ -1,0 +1,18 @@
+{
+    "gm_thresholds": "10,5,0",
+    "gm_method": "average",
+    "gm_delimiter": ".",
+
+    "pd_distm": "hamming",
+    "pd_missing_threshold": 1.0,
+    "pd_sample_quality_threshold": 1.0,
+    "pd_file_type": "text",
+    "pd_mapping_file": null,
+    "pd_skip": false,
+    "pd_columns": null,
+    "pd_count_missing": false,
+
+    "max_cpus": 1,
+    "max_memory": "2.GB",
+    "max_time": "1.h"
+}
