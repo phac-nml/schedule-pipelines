@@ -12,7 +12,9 @@ python scripts/update-samplesheet.py --json /tmp/gasnomenclature/output/iridanex
 
 nextflow run phac-nml/arboratornf -r 0.2.0 --input https://raw.githubusercontent.com/phac-nml/schedule-pipelines/refs/heads/main/test/data/samplesheet_arborator.csv -w /tmp/arborator_detection/work -profile docker -params-file https://raw.githubusercontent.com/phac-nml/schedule-pipelines/refs/heads/main/config/arboratornf-detection-listeria.json -queue-size 4 --outdir /tmp/arborator_detection/output
 
+## Post-Processing
 
+python scripts/post-processing.py --gasnomenclature /tmp/gasnomenclature/output/ --arborator /tmp/arborator/output/ --output /tmp/post/
 
 ## Legal
 
