@@ -33,6 +33,8 @@ logger = logging.getLogger('post-processing.py')
 
 def compress_directory(input_path, output_path, tag):
 
+    logger.info(f"Compressing {tag}: {input_path}")
+
     # Compress the whole directories:
     zip_path = Path(output_path, str(tag) + '.zip')
 
@@ -68,6 +70,8 @@ def compress_directory(input_path, output_path, tag):
     else:
         raise Exception("Could not find IRIDA Next JSON output file!")
 
+    logger.info(f"Finished compressing {tag}")
+
 
 def main():
     parser = argparse.ArgumentParser(prog='post-processing.py', description='Post-process gasnomenclature and arboratornf results')
@@ -78,6 +82,11 @@ def main():
     args = parser.parse_args()
     gasnomenclature_path = args.gasnomenclature
     arborator_path = args.arborator
+
+    logger.info(f"Running post-processing.py")
+    logger.info(f"Using --gasnomenclature {args.gasnomenclature}")
+    logger.info(f"Using --arborator {args.arborator}")
+    logger.info(f"Using --output {args.output}")
 
     output_directory = Path(args.output)
     output_directory.mkdir(parents=True, exist_ok=True)

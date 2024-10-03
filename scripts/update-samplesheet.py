@@ -28,10 +28,12 @@ import gzip
 
 script_dir = Path(os.path.dirname(__file__))
 logging.config.fileConfig(script_dir.parent / 'config' / 'logging.config')
-logger = logging.getLogger('run-pipelines.py')
+logger = logging.getLogger('update-samplesheet.py')
 
 
 def parse_addresses(json_path):
+
+    logger.info(f"Parsing addresses from IRIDA Next JSON")
 
     open_function = gzip.open if str(json_path).endswith(".gz") else open
 
@@ -43,10 +45,14 @@ def parse_addresses(json_path):
     for sample in data["metadata"]["samples"]:
         addresses[sample] = data["metadata"]["samples"][sample]["address"]
 
+    logger.info(f"Finished parsing addresses")
+
     return addresses
 
 
 def update_addresses(samplesheet_path, addresses, output_path):
+
+    logger.info(f"Updating sample sheet addresses")
 
     with open(samplesheet_path, 'r') as input_file, \
         open(output_path, 'w') as output_file:
@@ -65,6 +71,8 @@ def update_addresses(samplesheet_path, addresses, output_path):
 
             output_file.write(",".join(tokens))
 
+    logger.info(f"Finished updating addresses")
+
 
 def main():
     parser = argparse.ArgumentParser(prog='update-samplesheet.py', description='Update an arboratornf sample sheet with gasnomenclature results')
@@ -76,6 +84,11 @@ def main():
     json_path = args.json
     samplesheet_path = args.samplesheet
     output_path = args.output
+
+    logger.info(f"Running update-samplesheet.py")
+    logger.info(f"Using --json {args.json}")
+    logger.info(f"Using --samplesheet {args.samplesheet}")
+    logger.info(f"Using --output {args.output}")
 
     addresses = parse_addresses(json_path)
     updated_samplesheet_path = update_addresses(samplesheet_path, addresses, output_path)
