@@ -6,11 +6,21 @@
 nextflow run phac-nml/gasnomenclature -r 0.2.2 --input https://raw.githubusercontent.com/phac-nml/schedule-pipelines/refs/heads/main/test/data/samplesheet_gasnomeclasture.csv -w /tmp/gasnomenclature/work -profile docker -params-file https://raw.githubusercontent.com/phac-nml/schedule-pipelines/refs/heads/main/config/gasnomenclature-listeria.json -queue-size 4 --outdir /tmp/gasnomenclature/output
 ```
 
+- `--input`: path to the input sample sheet
+- `-w`: path to the work directory
+- `-params-file`: parameters / config file for species / run
+- `queue-size`: number of Nextflow jobs to run simultaneously
+- `outdir`: the output directory
+
 ## Update Samplesheet
 
 ```
 python scripts/update-samplesheet.py --json /tmp/gasnomenclature/output/iridanext.output.json.gz --samplesheet test/data/samplesheet_arborator.csv --output /tmp/updated_samplesheet.csv
 ```
+
+- `json`: path to JSON file output by the previous step (GASNomenclature)
+- `samplesheet`: path to Arborator sample sheet to update
+- `output`: the output directory
 
 ## Arborator
 
@@ -18,11 +28,20 @@ python scripts/update-samplesheet.py --json /tmp/gasnomenclature/output/iridanex
 nextflow run phac-nml/arboratornf -r 0.2.0 --input /tmp/updated_samplesheet.csv -w /tmp/arborator_detection/work -profile docker -params-file https://raw.githubusercontent.com/phac-nml/schedule-pipelines/refs/heads/main/config/arboratornf-detection-listeria.json -queue-size 4 --outdir /tmp/arborator_detection/output
 ```
 
+- `--input`: path to the input sample sheet
+- `-w`: path to the work directory
+- `-params-file`: parameters / config file for species / run
+- `queue-size`: number of Nextflow jobs to run simultaneously
+- `outdir`: the output directory
+
 ## Post-Processing
 
 ```
 python scripts/post-processing.py --gasnomenclature /tmp/gasnomenclature/output/ --arborator /tmp/arborator/output/ --output /tmp/post/
 ```
+
+- `gasnomenclature`: GASNomenclature output directory (from the GASNomenclature step above)
+- `arborator`: Arborator output directory (from the Arborator step above)
 
 # Outputs
 
