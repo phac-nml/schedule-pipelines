@@ -24,6 +24,7 @@ import logging.config
 from pathlib import Path
 from zipfile import ZipFile
 import gzip
+import datetime
 
 
 script_dir = Path(os.path.dirname(__file__))
@@ -91,10 +92,10 @@ def main():
     output_directory = Path(args.output)
     output_directory.mkdir(parents=True, exist_ok=True)
 
-    gasnomenclature_tag = 'gasnomenclature'
+    gasnomenclature_tag = 'gasnomenclature_' + str(datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
     compress_directory(gasnomenclature_path, output_directory, gasnomenclature_tag)
 
-    arborator_tag = 'arborator'
+    arborator_tag = 'arborator_' + str(datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
     compress_directory(arborator_path, output_directory, arborator_tag)
 
 

@@ -16,6 +16,13 @@ nextflow run phac-nml/arboratornf -r 0.2.0 --input /tmp/updated_samplesheet.csv 
 
 python scripts/post-processing.py --gasnomenclature /tmp/gasnomenclature/output/ --arborator /tmp/arborator/output/ --output /tmp/post/
 
+# Outputs
+
+arborator_2024-10-03_13-42-34.iridanext.output.json.zip
+arborator_2024-10-03_13-42-34.zip
+gasnomenclature_2024-10-03_13-42-34.iridanext.output.json.zip
+gasnomenclature_2024-10-03_13-42-34.zip
+
 ## Legal
 
 Copyright Government of Canada 2024
