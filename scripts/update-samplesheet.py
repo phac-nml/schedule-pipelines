@@ -46,12 +46,10 @@ def parse_addresses(json_path):
     return addresses
 
 
-def update_addresses(samplesheet_path, addresses):
-
-    updated_path = "/tmp/samplesheet.updated.csv"
+def update_addresses(samplesheet_path, addresses, output_path):
 
     with open(samplesheet_path, 'r') as input_file, \
-        open(updated_path, 'w') as output_file:
+        open(output_path, 'w') as output_file:
 
         # Header
         header = input_file.readline()
@@ -67,20 +65,20 @@ def update_addresses(samplesheet_path, addresses):
 
             output_file.write(",".join(tokens))
 
-    return updated_path
-
 
 def main():
     parser = argparse.ArgumentParser(prog='update-samplesheet.py', description='Update an arboratornf sample sheet with gasnomenclature results')
     parser.add_argument('--json', action='store', dest='json', type=str, required=True)
     parser.add_argument('--samplesheet', action='store', dest='samplesheet', type=str, required=True)
+    parser.add_argument('--output', action='store', dest='output', type=str, required=True)
 
     args = parser.parse_args()
     json_path = args.json
     samplesheet_path = args.samplesheet
+    output_path = args.output
 
     addresses = parse_addresses(json_path)
-    updated_samplesheet_path = update_addresses(samplesheet_path, addresses)
+    updated_samplesheet_path = update_addresses(samplesheet_path, addresses, output_path)
 
 
 if __name__ == '__main__':

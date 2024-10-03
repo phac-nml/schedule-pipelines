@@ -6,11 +6,11 @@ nextflow run phac-nml/gasnomenclature -r 0.2.2 --input https://raw.githubusercon
 
 ## Update Samplesheet
 
-python scripts/update-samplesheet.py --json /tmp/gasnomenclature/output/iridanext.output.json.gz --samplesheet test/data/samplesheet_arborator.csv
+python scripts/update-samplesheet.py --json /tmp/gasnomenclature/output/iridanext.output.json.gz --samplesheet test/data/samplesheet_arborator.csv --output /tmp/updated_samplesheet.csv
 
 ## Arborator
 
-nextflow run phac-nml/arboratornf -r 0.2.0 --input https://raw.githubusercontent.com/phac-nml/schedule-pipelines/refs/heads/main/test/data/samplesheet_arborator.csv -w /tmp/arborator_detection/work -profile docker -params-file https://raw.githubusercontent.com/phac-nml/schedule-pipelines/refs/heads/main/config/arboratornf-detection-listeria.json -queue-size 4 --outdir /tmp/arborator_detection/output
+nextflow run phac-nml/arboratornf -r 0.2.0 --input /tmp/updated_samplesheet.csv -w /tmp/arborator_detection/work -profile docker -params-file https://raw.githubusercontent.com/phac-nml/schedule-pipelines/refs/heads/main/config/arboratornf-detection-listeria.json -queue-size 4 --outdir /tmp/arborator_detection/output
 
 ## Post-Processing
 

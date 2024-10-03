@@ -41,7 +41,12 @@ def compress_directory(input_path, output_path, tag):
             for filename in files:  
                 file_path = Path(root, filename)
                 relative_path = os.path.relpath(file_path, input_path)
-                zip_file.write(file_path, arcname=relative_path)
+
+                if relative_path == 'iridanext.output.json.gz':
+                    with gzip.open(file_path, 'r') as gzip_file:
+                        zip_file.writestr('iridanext.output.json', gzip_file.read())
+                else:
+                    zip_file.write(file_path, arcname=relative_path)
 
     # Compress only the IRIDA Next JSON output file:
     zip_path = Path(output_path, str(tag) + '.iridanext.output.json.zip')
